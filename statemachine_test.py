@@ -2,9 +2,6 @@ import time
 import random
 from statemachine import StateMachine
 
-#{} set
-#[] list
-#() tuple
 alphabet = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
 
 def q0_transitions(input):
@@ -82,7 +79,8 @@ def q5_transitions(input):
     elif input == "#":
         newState = "q0"
     elif input in alphabet:  
-        newState = "q11"
+        print("INCORRECT COMBINATION.")
+        newState = "q0"
     else:
         newState = "error_state"
     time.sleep(2)
@@ -171,7 +169,9 @@ if __name__ == "__main__":
     m.run("147258")
 
     #Random test case
-    # randTest = ""
-    # for i in range(random.choice([10])):
-    #     randTest += str(random.choice([0, 1]))
-    # m.run(randTest, "random")
+    randTest = ""
+    for i in range(random.choice([10])):
+        randTest += str(random.choice([0, 1]))
+    m.run(randTest, "random")
+
+    

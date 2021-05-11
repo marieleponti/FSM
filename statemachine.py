@@ -40,4 +40,4 @@ class StateMachine:
                     handler = self.handlers[newState.upper()]
                 else:
                     break
-        print("-------------------------------")
+        print("--------------------------------")
