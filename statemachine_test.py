@@ -5,7 +5,7 @@ from statemachine import StateMachine
 alphabet = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
 
 def q0_transitions(input):
-    print("start")
+    print("start state")
     print("current state: q0\tinput: {}".format(input))
     if input == "1":
         newState = "q1"
@@ -97,6 +97,8 @@ def q7_transitions(input):
     print("current state: q7\tinput: {}".format(input))
     if input in alphabet: 
         newState = "q8"
+    elif input == "#":
+        newState = "q0"
     else:
         newState = "error_state"
     time.sleep(2)
@@ -106,6 +108,8 @@ def q8_transitions(input):
     print("current state: q8\tinput: {}".format(input))
     if input in alphabet: 
         newState = "q9"
+    elif input == "#":
+        newState = "q0"
     else:
         newState = "error_state"
     time.sleep(2)
@@ -115,6 +119,8 @@ def q9_transitions(input):
     print("current state: q9\tinput: {}".format(input))
     if input in alphabet: 
         newState = "q10"
+    elif input == "#":
+        newState = "q0"
     else:
         newState = "error_state"
     time.sleep(2)
@@ -124,6 +130,8 @@ def q10_transitions(input):
     print("current state: q10\tinput: {}".format(input))
     if input in alphabet: 
         newState = "q11"
+    elif input == "#":
+        newState = "q0"
     else:
         newState = "error_state"
     time.sleep(2)
@@ -161,17 +169,22 @@ if __name__ == "__main__":
     m.set_start("q0")
 
     #Test case 1
-    m.run("010010") 
+    m.run("01#0010") 
     m.run("147259") # no
-    m.run("147259174258")
+    m.run("14#7259174258")
+    m.run("47258#")
 
   	#Test case 2
     m.run("147258")
 
     #Random test case
     randTest = ""
-    for i in range(random.choice([10])):
-        randTest += str(random.choice([0, 1]))
-    m.run(randTest, "random")
+    for i in range(random.choice([6])):
+        randTest += str(random.choice([0, 10]))
+    m.run(randTest)
 
+    #User run 
+    code = ""
+    code += input("Enter keycode followed by ENTER key: ")
+    m.run(code)
     
